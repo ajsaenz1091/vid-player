@@ -14,28 +14,41 @@ const speedDial = document.querySelector('.player-speed');
 const expand = document.querySelector('.fa-expand')
 const player = document.querySelector('.player')
 
-// document.addEventListener('DOMContentLoaded', fetchVids)
+const body = document.querySelector('body');
+const testBtn = document.createElement('button');
+testBtn.innerHTML = 0;
+body.appendChild(testBtn)
+
+function addToTestBtn(){
+    const sum = parseInt(testBtn.innerHTML) + 1
+    testBtn.innerHTML = sum
+}
+
+testBtn.addEventListener('click', addToTestBtn)
+
+
+
+document.addEventListener('DOMContentLoaded', fetchVids)
 
 // Fetch videos
-// const YouTube_API_key =  "563492ad6f917000010000016fcf9a0d330d4ae89e364a5d50b2452b"
-// const API_key =  "563492ad6f917000010000016fcf9a0d330d4ae89e364a5d50b2452b"
-// const yTubeUrl = "https://www.googleapis.com/youtube/v3/channels"
-// const url = "https://api.pexels.com/videos/popular?per_page=5"
-// const configObj = {
-//     method: 'GET',
-//     headers: {
-//         Accept: 'application/json',
-//         Authorization: API_key
-//     }
-// }
-// function fetchVids () {
-//     fetch(url, configObj)
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data)
-//         video.src = data.videos[3].video_files[3].link;
-//     })
-// }
+
+const API_key =  "563492ad6f917000010000016fcf9a0d330d4ae89e364a5d50b2452b"
+const url = "https://api.pexels.com/videos/popular?per_page=5"
+const configObj = {
+    method: 'GET',
+    headers: {
+        Accept: 'application/json',
+        Authorization: API_key
+    }
+}
+function fetchVids () {
+    fetch(url, configObj)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        video.src = data.videos[3].video_files[3].link;
+    })
+}
 
 // Play & Pause ----------------------------------- //
 
